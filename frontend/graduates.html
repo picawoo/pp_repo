@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выпускники УрФУ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" alt="Логотип, если будет">
+            <h1>Выпускники УрФУ в СМИ</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="graduates.html" class="active">Выпускники</a></li>
+                <li><a href="mentions.html">Упоминания</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Быстрый поиск -->
+        <section class="search-section">
+            <div class="search-box">
+                <input type="text" placeholder="Поиск по имени, факультету, году выпуска...">
+                <i class="fas fa-search"></i>
+            </div>
+        </section>
+
+        <!-- Список выпускников -->
+        <section class="graduates-section">
+            <div class="graduates-list">
+                <a href="mentions.html?graduate=1" class="graduate-item">
+                    <span class="name">Обабков Илья Николаевич</span>
+                    <span class="faculty">Факультет: Институт радиоэлектроники и информационных технологий</span>
+                    <span class="year">Год выпуска: 2015</span>
+                    <span class="mentions">156 упоминаний</span>
+                </a>
+                <a href="mentions.html?graduate=2" class="graduate-item">
+                    <span class="name">Невский Пётр Юрьевич</span>
+                    <span class="faculty">Факультет: Физико-технологический институт</span>
+                    <span class="year">Год выпуска: 2016</span>
+                    <span class="mentions">135 упоминаний</span>
+                </a>
+                <a href="mentions.html?graduate=3" class="graduate-item">
+                    <span class="name">Качалкин Артём Анатольевич</span>
+                    <span class="faculty">Факультет: Институт естественных наук и математики</span>
+                    <span class="year">Год выпуска: 2017</span>
+                    <span class="mentions">133 упоминания</span>
+                </a>
+                <a href="mentions.html?graduate=4" class="graduate-item">
+                    <span class="name">Изотов Денис Владимирович</span>
+                    <span class="faculty">Факультет: Институт новых материалов и технологий</span>
+                    <span class="year">Год выпуска: 2014</span>
+                    <span class="mentions">111 упоминаний</span>
+                </a>
+                <a href="mentions.html?graduate=5" class="graduate-item">
+                    <span class="name">Песковацкий Алексей Сергеевич</span>
+                    <span class="faculty">Факультет: Институт радиоэлектроники и информационных технологий</span>
+                    <span class="year">Год выпуска: 2018</span>
+                    <span class="mentions">108 упоминаний</span>
+                </a>
+                <a href="mentions.html?graduate=6" class="graduate-item">
+                    <span class="name">Смирнов Михаил Александрович</span>
+                    <span class="faculty">Факультет: Физико-технологический институт</span>
+                    <span class="year">Год выпуска: 2015</span>
+                    <span class="mentions">95 упоминаний</span>
+                </a>
+                <a href="mentions.html?graduate=7" class="graduate-item">
+                    <span class="name">Кузнецова Анна Владимировна</span>
+                    <span class="faculty">Факультет: Институт естественных наук и математики</span>
+                    <span class="year">Год выпуска: 2016</span>
+                    <span class="mentions">87 упоминаний</span>
+                </a>
+                <a href="mentions.html?graduate=8" class="graduate-item">
+                    <span class="name">Попов Дмитрий Игоревич</span>
+                    <span class="faculty">Факультет: Институт новых материалов и технологий</span>
+                    <span class="year">Год выпуска: 2017</span>
+                    <span class="mentions">82 упоминания</span>
+                </a>
+                <a href="mentions.html?graduate=9" class="graduate-item">
+                    <span class="name">Кузнецова Анна Владимировна</span>
+                    <span class="faculty">Факультет: Институт естественных наук и математики</span>
+                    <span class="year">Год выпуска: 2016</span>
+                    <span class="mentions">80 упоминаний</span>
+                </a>
+                <a href="mentions.html?graduate=10" class="graduate-item">
+                    <span class="name">Попов Дмитрий Игоревич</span>
+                    <span class="faculty">Факультет: Институт новых материалов и технологий</span>
+                    <span class="year">Год выпуска: 2017</span>
+                    <span class="mentions">78 упоминаний</span>
+                </a>
+            </div>
+
+            <!-- Нумерация страниц -->
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <span>...</span>
+                <a href="#">10</a>
+                <a href="#" class="next">Следующая <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <script src="src/graduates.js"></script>
+</body>
+
+</html>
