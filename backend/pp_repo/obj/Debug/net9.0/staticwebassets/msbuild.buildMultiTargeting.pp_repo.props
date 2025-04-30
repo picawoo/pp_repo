@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\pp_repo.props" />
+</Project>
