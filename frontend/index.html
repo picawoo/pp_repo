@@ -7,6 +7,7 @@
     <title>Мониторинг достижений выпускников УрФУ</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="scripts/api.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css">
@@ -39,59 +40,8 @@
 
         <section class="top-list-section">
             <div class="chart">
-                <h3>Самые медийные выпускники</h3>
-                <div class="top-list">
-                    <!-- URL условные -->
-                    <a href="mentions.html?graduate=1" class="top-item">
-                        <span class="rank">1</span>
-                        <span class="name">Обабков Илья Николаевич</span>
-                        <span class="count">156 упоминаний</span>
-                    </a>
-                    <a href="mentions.html?graduate=2" class="top-item">
-                        <span class="rank">2</span>
-                        <span class="name">Невский Пётр Юрьевич</span>
-                        <span class="count">135 упоминаний</span>
-                    </a>
-                    <a href="mentions.html?graduate=3" class="top-item">
-                        <span class="rank">3</span>
-                        <span class="name">Качалкин Артём Анатольевич</span>
-                        <span class="count">133 упоминаний</span>
-                    </a>
-                    <a href="mentions.html?graduate=4" class="top-item">
-                        <span class="rank">4</span>
-                        <span class="name">Изотов Денис Владимирович</span>
-                        <span class="count">111 упоминаний</span>
-                    </a>
-                    <a href="mentions.html?graduate=5" class="top-item">
-                        <span class="rank">5</span>
-                        <span class="name">Песковацкий Алексей Сергеевич</span>
-                        <span class="count">108 упоминаний</span>
-                    </a>
-                    <a href="mentions.html?graduate=6" class="top-item">
-                        <span class="rank">6</span>
-                        <span class="name">Смирнов Михаил Александрович</span>
-                        <span class="count">95 упоминаний</span>
-                    </a>
-                    <a href="mentions.html?graduate=7" class="top-item">
-                        <span class="rank">7</span>
-                        <span class="name">Кузнецова Анна Владимировна</span>
-                        <span class="count">87 упоминаний</span>
-                    </a>
-                    <a href="mentions.html?graduate=8" class="top-item">
-                        <span class="rank">8</span>
-                        <span class="name">Попов Дмитрий Игоревич</span>
-                        <span class="count">82 упоминания</span>
-                    </a>
-                    <a href="mentions.html?graduate=9" class="top-item">
-                        <span class="rank">9</span>
-                        <span class="name">Волкова Екатерина Сергеевна</span>
-                        <span class="count">78 упоминаний</span>
-                    </a>
-                    <a href="mentions.html?graduate=10" class="top-item">
-                        <span class="rank">10</span>
-                        <span class="name">Иванов Андрей Петрович</span>
-                        <span class="count">75 упоминаний</span>
-                    </a>
+                <h3>Самые медийные выпускники</h3> 
+                <div class="top-list" id="topAlumniContainer">
                 </div>
             </div>
         </section>
@@ -116,28 +66,7 @@
         <section class="latest-mentions-section">
             <div class="news-card">
                 <h3>Свежие упоминания</h3>
-                <div class="news-list">
-                    <a href="Ссылка на источник" class="news-item">
-                        <div class="news-date">12.03.2024</div>
-                        <div class="news-title">Выпускник УрФУ Песковацкий Алексей назначен директором по развитию в
-                            СберТех</div>
-                        <div class="news-source">РБК</div>
-                    </a>
-                    <a href="Ссылка на источник" class="news-item">
-                        <div class="news-date">11.03.2024</div>
-                        <div class="news-title">Невский Пётр, выпускник УрФУ, получил премию "Молодой ученый года"</div>
-                        <div class="news-source">Наука и жизнь</div>
-                    </a>
-                    <a href="Ссылка на источник" class="news-item">
-                        <div class="news-date">10.03.2024</div>
-                        <div class="news-title">Изотов Денис возглавил новое направление в Росатоме</div>
-                        <div class="news-source">Коммерсантъ</div>
-                    </a>
-                    <a href="Ссылка на источник" class="news-item">
-                        <div class="news-date">09.03.2024</div>
-                        <div class="news-title">Качалкин Артём стал лауреатом премии "Инновации года"</div>
-                        <div class="news-source">Ведомости</div>
-                    </a>
+                <div class="news-list" id="latestMentionsContainer">
                 </div>
             </div>
         </section>
