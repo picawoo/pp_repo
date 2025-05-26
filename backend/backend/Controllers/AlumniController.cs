@@ -1,4 +1,5 @@
 ﻿using backend.Data;
+using backend.DTOs;
 using backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +31,21 @@ public class AlumniController : ControllerBase
         var alumni = await _context.Alumni.FindAsync(id);
         if (alumni == null) return NotFound();
         return alumni;
+    }
+    
+    [HttpGet("top")]
+    public async Task<ActionResult<IEnumerable<AlumniDTO>>> GetTopAlumni()
+    {
+        return await _context.Alumni
+            .OrderByDescending(a => a.Mentions.Count)
+            .Take(10)
+            .Select(a => new AlumniDTO
+            {
+                Id = a.Id,
+                FullName = a.Name,
+                MentionsCount = a.Mentions.Count
+            })
+            .ToListAsync();
     }
 
     // POST: api/Alumni

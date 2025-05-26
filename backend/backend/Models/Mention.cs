@@ -1,4 +1,6 @@
-﻿namespace backend.Models;
+﻿using Newtonsoft.Json;
+
+namespace backend.Models;
 
 public class Mention
 {
@@ -7,5 +9,6 @@ public class Mention
     public required string Content { get; set; }
     public DateTime FoundAt { get; set; } = DateTime.UtcNow;
     public int AlumniId { get; set; }
+    [JsonIgnore]
     public Alumni? Alumni { get; set; }
 }
