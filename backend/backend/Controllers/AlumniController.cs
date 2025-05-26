@@ -40,4 +40,25 @@ public class AlumniController : ControllerBase
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetAlumni), new { id = alumni.Id }, alumni);
     }
+    
+    // PUT: api/Alumni/5
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutAlumni(int id, Alumni alumni)
+    {
+        if (id != alumni.Id) return BadRequest();
+        _context.Entry(alumni).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+
+    // DELETE: api/Alumni/5
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAlumni(int id)
+    {
+        var alumni = await _context.Alumni.FindAsync(id);
+        if (alumni == null) return NotFound();
+        _context.Alumni.Remove(alumni);
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
 }

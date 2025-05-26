@@ -11,4 +11,5 @@ public class Alumni
     public int GraduationYear { get; set; }
     public string? Faculty { get; set; }
     public string? CurrentJob { get; set; }
+    public List<Mention>? Mentions { get; set; }  // Навигационное свойство
 }
