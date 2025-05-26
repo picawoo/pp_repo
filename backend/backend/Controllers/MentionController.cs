@@ -1,4 +1,5 @@
 ﻿using backend.Data;
+using backend.DTOs;
 using backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -31,13 +32,47 @@ public class MentionsController : ControllerBase
         if (mention == null) return NotFound();
         return mention;
     }
+    
+    [HttpGet("latest")]
+    public async Task<ActionResult<IEnumerable<MentionDTO>>> GetLatestMentions()
+    {
+        return await _context.Mentions
+            .OrderByDescending(m => m.FoundAt)
+            .Take(4)
+            .Select(m => new MentionDTO
+            {
+                Title = m.Content.Length > 50 
+                    ? m.Content.Substring(0, 50) + "..." 
+                    : m.Content,
+                Source = new Uri(m.SourceUrl).Host.Replace("www.", ""),
+                SourceUrl = m.SourceUrl,
+                FoundAt = m.FoundAt
+            })
+            .ToListAsync();
+    }
 
     // POST: api/Mentions
     [HttpPost]
-    public async Task<ActionResult<Mention>> PostMention(Mention mention)
+    public async Task<ActionResult<Mention>> PostMention(
+        [FromBody] CreateMentionDTO mentionDto)
     {
+        var alumniExists = await _context.Alumni.AnyAsync(a => a.Id == mentionDto.AlumniId);
+        if (!alumniExists)
+        {
+            return BadRequest("Alumni not found");
+        }
+
+        var mention = new Mention
+        {
+            SourceUrl = mentionDto.SourceUrl,
+            Content = mentionDto.Content,
+            AlumniId = mentionDto.AlumniId,
+            FoundAt = DateTime.UtcNow
+        };
+
         _context.Mentions.Add(mention);
         await _context.SaveChangesAsync();
+
         return CreatedAtAction(nameof(GetMention), new { id = mention.Id }, mention);
     }
 
