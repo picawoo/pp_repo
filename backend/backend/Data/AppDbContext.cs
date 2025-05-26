@@ -9,4 +9,13 @@ public class AppDbContext : DbContext
 
     public DbSet<Alumni> Alumni { get; set; }
     public DbSet<Mention> Mentions { get; set; }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // Настройка связей
+        modelBuilder.Entity<Mention>()
+            .HasOne(m => m.Alumni)
+            .WithMany(a => a.Mentions)
+            .HasForeignKey(m => m.AlumniId);
+    }
 }

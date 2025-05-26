@@ -1,4 +1,5 @@
 ﻿using backend.Data;
+using backend.DTOs;
 using backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,21 @@ public class AlumniController : ControllerBase
         if (alumni == null) return NotFound();
         return alumni;
     }
+    
+    [HttpGet("top")]
+    public async Task<ActionResult<IEnumerable<AlumniDTO>>> GetTopAlumni()
+    {
+        return await _context.Alumni
+            .OrderByDescending(a => a.Mentions.Count)
+            .Take(10)
+            .Select(a => new AlumniDTO
+            {
+                Id = a.Id,
+                FullName = a.Name,
+                MentionsCount = a.Mentions.Count
+            })
+            .ToListAsync();
+    }
 
     // POST: api/Alumni
     [HttpPost]
@@ -39,5 +55,26 @@ public class AlumniController : ControllerBase
         _context.Alumni.Add(alumni);
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetAlumni), new { id = alumni.Id }, alumni);
+    }
+    
+    // PUT: api/Alumni/5
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutAlumni(int id, Alumni alumni)
+    {
+        if (id != alumni.Id) return BadRequest();
+        _context.Entry(alumni).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+
+    // DELETE: api/Alumni/5
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAlumni(int id)
+    {
+        var alumni = await _context.Alumni.FindAsync(id);
+        if (alumni == null) return NotFound();
+        _context.Alumni.Remove(alumni);
+        await _context.SaveChangesAsync();
+        return NoContent();
     }
 }
